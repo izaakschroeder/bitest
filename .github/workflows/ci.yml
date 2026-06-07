@@ -1,0 +1,45 @@
+name: ci
+run-name: ci ${{ github.ref }} by ${{ github.actor }}
+
+on:
+  push: null
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: jdx/mise-action@v3
+        with:
+          install: true
+          cache: true
+
+      - uses: actions/cache@v4
+        with:
+          path: "~/.bun/install/cache"
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+          restore-keys: bun-${{ runner.os }}-
+
+      - name: Install deps
+        shell: bash
+        env:
+          BUN_INSTALL_CACHE_DIR: ~/.bun/install/cache
+        run: |
+          bun install --frozen-lockfile
+
+      - name: Test
+        shell: bash
+        run: |
+          bun run test

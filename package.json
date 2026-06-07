@@ -1,0 +1,33 @@
+{
+	"name": "bitest",
+	"version": "1.0.0",
+	"license": "0BSD",
+	"author": {
+    "name": "Izaak Schroeder",
+    "email": "izaak.schroeder@gmail.com"
+	},
+	"scripts": {
+		"format": "biome check --error-on-warnings --fix ./",
+		"lint": "biome check --error-on-warnings ./",
+		"test": "bun run --parallel test-spec test-types",
+		"test-spec": "bun test",
+		"test-types": "tsgo"
+	},
+	"imports": {
+		"#types": "./src/types.ts"
+	},
+	"types": "./src/index.ts",
+	"main": "./src/index.ts",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"engines": {
+		"bun": ">=1.3.14"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.16",
+		"@types/bun": "1.3.14",
+		"@typescript/native-preview": "7.0.0-dev.20260606.1",
+		"typescript": "6.0.3"
+	}
+}
