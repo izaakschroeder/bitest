@@ -1,4 +1,4 @@
-# `bitest`
+# `@izaakschroeder/bitest`
 
 Testing utilities for `bun test`. Provides fixture support for `bun:test` compatible with both `vitest` and `playwright` APIs. All provided APIs are more or less identical to those found in `vitest` / `playwright`, and so the documentation in those projects is intended to be used here – deviations should generally be considered bugs unless explicitly noted.
 
@@ -9,7 +9,7 @@ The desired end goal of this project is for it to be deprecated and its function
 ## Installation
 
 ```sh
-bun add bitest
+bun add @izaakschroeder/bitest
 ```
 
 Then simply replace `bun:test` with `bitest` and get access to the extended `test`/`describe` functionality.
@@ -30,7 +30,7 @@ Fixtures are reusable pieces of test setup that can be shared across tests. They
 ### Playwright-style (`.extend` with an object)
 
 ```ts
-import { test as base } from "bitest";
+import { test as base } from "@izaakschroeder/bitest";
 
 const test = base.extend({
   // fixture with dependencies and cleanup
@@ -101,7 +101,7 @@ const test = base.extend({
 ### `.scoped()` / `.use()` – lexical scoping
 
 ```ts
-import { describe, test } from "bitest";
+import { describe, test } from "@izaakschroeder/bitest";
 
 describe("API tests", () => {
   // Fixtures added via `scoped()` (or its alias `use()`) apply only to

@@ -1,11 +1,17 @@
 {
-	"name": "bitest",
+	"name": "@izaakschroeder/bitest",
 	"version": "1.0.0",
 	"license": "0BSD",
 	"author": {
     "name": "Izaak Schroeder",
     "email": "izaak.schroeder@gmail.com"
 	},
+	"files": [
+	  "README.md",
+	  "./src/**",
+		"package.json",
+		"tsconfig.json"
+	],
 	"scripts": {
 		"format": "biome check --error-on-warnings --fix ./",
 		"lint": "biome check --error-on-warnings ./",
