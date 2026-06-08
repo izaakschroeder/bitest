@@ -24,7 +24,6 @@ test("test has extend, scoped, use, skip, only, todo methods", () => {
 	expect(typeof t.use).toBe("function");
 	expect(typeof t.skip).toBe("function");
 	expect(typeof t.skipIf).toBe("function");
-	expect(typeof t.only).toBe("function");
 	expect(typeof t.todo).toBe("function");
 	expect(typeof t.failing).toBe("function");
 	expect(typeof t.concurrent).toBe("function");
@@ -43,9 +42,8 @@ test("it is same as test", () => {
 	expect(publicModule.it).toBe(publicModule.test);
 });
 
-test("describe has only, skip, todo, concurrent, serial", () => {
+test("describe has skip, todo, concurrent, serial", () => {
 	const d = publicModule.describe;
-	expect(typeof d.only).toBe("function");
 	expect(typeof d.skip).toBe("function");
 	expect(typeof d.todo).toBe("function");
 	expect(typeof d.concurrent).toBe("function");

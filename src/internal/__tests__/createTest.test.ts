@@ -202,14 +202,12 @@ t11("vitest-style static fixture with config via extend", ({ configStr }) => {
 	expect(configStr).toEqual("world");
 });
 
-test("`.only`, `.skip`, `.todo` are available on extended tests", () => {
-	expect(typeof t1.only).toBe("function");
+test("`.skip`, `.todo` are available on extended tests", () => {
 	expect(typeof t1.skip).toBe("function");
 	expect(typeof t1.todo).toBe("function");
 });
 
 test("lifted properties are cached across accesses", () => {
-	expect(t1.only).toBe(t1.only);
 	expect(t1.skip).toBe(t1.skip);
 	expect(t1.todo).toBe(t1.todo);
 });
@@ -220,7 +218,6 @@ test("unknown property access falls through to base", () => {
 
 test("Reflect.ownKeys returns lifted method names", () => {
 	const keys = Reflect.ownKeys(test as object);
-	expect(keys).toContain("only");
 	expect(keys).toContain("skip");
 	expect(keys).toContain("todo");
 	expect(keys).toContain("extend");

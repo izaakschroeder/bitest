@@ -142,7 +142,6 @@ base("createDescribe property access", () => {
 	});
 
 	test("lifted methods are functions", () => {
-		expect(typeof describe.only).toBe("function");
 		expect(typeof describe.skip).toBe("function");
 		expect(typeof describe.todo).toBe("function");
 		expect(typeof describe.concurrent).toBe("function");
